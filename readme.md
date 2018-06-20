@@ -4,7 +4,7 @@ In one (almost) file.<br>
 
 Compress images, photos, pdf-s, text files and so on, just in your browser!
 
-### [Demo page](http://evgeny.io/compressor.html)
+### [Demo page](http://evgeny.io/projects/compressor/)
 
 ## Libs used
 
