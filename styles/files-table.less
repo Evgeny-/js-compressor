@@ -1,0 +1,44 @@
+.files-table {
+   width: 100%;
+   text-align: left;
+   border-collapse: separate !important;
+   border-spacing: 0;
+
+   &-container {
+      width: 99%;
+      margin: 25px auto;
+   }
+
+   th {
+      border-bottom: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+      color: #555;
+      background-color: #eee;
+      padding: 8px;
+      text-align: left;
+      font-weight: 400;
+   }
+
+   td {
+      border-bottom: 1px solid #ddd;
+      color: #333;
+      padding: 8px;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
+      vertical-align: top;
+   }
+
+   td, th {
+      &:first-of-type {
+         border-left: 1px solid #ddd;
+      }
+
+      &:last-of-type {
+         border-right: 1px solid #ddd;
+      }
+   }
+
+}

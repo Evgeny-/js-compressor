@@ -1,0 +1,14 @@
+{
+  "name": "compressor",
+  "devDependencies": {
+    "assemble-less": "*",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "grunt-angular-templates": "*",
+    "grunt-assets-inline": "*",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*"
+  }
+}

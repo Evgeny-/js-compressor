@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" ng-app="App">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+   <title>Compressor</title>
+
+   <link rel="stylesheet" href="build/styles.css"/>
+   <style>
+      [ng-cloak] { display: none; }
+   </style>
+   <script src="build/scripts.js"></script>
+</head>
+
+<body ng-controller="Main">
+
+<div class="content">
+   <div class="picker-container">
+      <div class="picker-item-container">
+         <div class="picker-item" file-picker="handleDocument">
+            <div class="picker-item-title">Document images</div>
+            <div class="picker-item-description">
+               Images with text (e.g. certificates)<br>
+               Supported formats .pdf, .jpg, .png, .gif</div>
+            <div class="picker-item-button-container">
+               <button class="picker-item-button -secondary">Pick image</button>
+            </div>
+         </div>
+      </div>
+
+      <div class="picker-item-container">
+         <div class="picker-item" file-picker="handlePhoto">
+            <div class="picker-item-title">Photos and pictures</div>
+            <div class="picker-item-description">
+               Images without text (e.g. photos)<br>
+               Supported formats .pdf, .jpg, .png, .gif</div>
+            <div class="picker-item-button-container">
+               <button class="picker-item-button -secondary">Pick photo</button>
+            </div>
+         </div>
+      </div>
+
+      <div class="picker-item-container">
+         <div class="picker-item" file-picker="handleFile">
+            <div class="picker-item-title">Other files</div>
+            <div class="picker-item-description">
+               Non pictures files<br>All formats are supported</div>
+            <div class="picker-item-button-container">
+               <button class="picker-item-button -secondary">Pick file</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="files-table-container">
+      <table class="files-table" ng-if="files.length">
+         <tr>
+            <th width="100px">Type</th>
+            <th>File name</th>
+            <th width="70px">Orig size</th>
+            <th width="70px">New size</th>
+            <th width="70px">Diff</th>
+            <th colspan="2"></th>
+         </tr>
+
+         <tr ng-repeat="file in files">
+            <td ng-bind="file.getType()"></td>
+            <td ng-bind="file.getName()"></td>
+            <td ng-bind="file.getOriginalSize()|bytes"></td>
+            <td ng-bind="file.getNewSize()|bytes"></td>
+            <td ng-bind="file.getSizeDiff() ? file.getSizeDiff() + '%' : 'TBD'"></td>
+            <td width="30px">
+               <a ng-click="editFile(file)" ng-if="file.editable">Edit</a>
+            </td>
+            <td width="70px">
+               <a ng-click="file.download()">Download</a>
+            </td>
+         </tr>
+
+         <tr ng-if="files.length > 1">
+            <td colspan="2"><b>Overall</b></td>
+            <td><b ng-bind="getOverallOriginalSize()|bytes"></b></td>
+            <td><b ng-bind="getOverallNewSize()|bytes"></b></td>
+            <td><b ng-bind="getOverallDiffString()"></b></td>
+            <td></td>
+            <td></td>
+         </tr>
+      </table>
+   </div>
+
+   <div class="buttons-container" ng-if="files.length">
+      <button ng-click="downloadArchive()">Download archive</button>
+   </div>
+</div>
+
+<div class="editor-container" ng-show="editorOpened">
+   <div class="editor">
+      <div class="editor-buttons">
+         <button ng-click="closeEditor()" class="-secondary">Cancel</button>
+         <button ng-click="applyFile()">Accept</button>
+      </div>
+      <div class="editor-slider">
+         <input class="js-range" type="range" min="0" max="100" step="10">
+         <div class="-right">High</div>
+         <div class="-left" ng-if="getFile().isDoc">Low colors</div>
+         <div class="-left" ng-if="getFile().isImage">Low quality</div>
+      </div>
+      <div class="editor-text" ng-show="!inProgress">
+         {{ getFile().getOriginalSize()|bytes }} 🠦 {{ getFile().getNewSize()|bytes }}
+         <b>Saved {{ getFile().getSizeDiff() }}%</b>
+      </div>
+      <div class="editor-text" ng-show="inProgress">
+         Processing...
+      </div>
+
+      <div class="editor-image-preview">
+         <img ng-src="{{ getFilePreview() }}">
+      </div>
+   </div>
+
+   <div class="editor-overlay" ng-click="closeEditor()"></div>
+</div>
+
+</body>
+</html>

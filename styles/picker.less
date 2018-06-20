@@ -1,0 +1,41 @@
+.picker {
+   &-container {
+      margin: 35px 0;
+   }
+
+   &-item {
+      width: 90%;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+
+      &.-active {
+         border: 2px solid @mainColor;
+         padding: 9px;
+         background: rgb(252, 254, 255);
+
+         * {pointer-events: none;}
+      }
+
+      &-container {
+         width: 33%;
+         vertical-align: middle;
+         display: inline-block;
+      }
+
+      &-title {
+         font-weight: 600;
+      }
+
+      &-description {
+         margin: 10px 0;
+      }
+
+      &-button {
+
+         &-container {
+
+         }
+      }
+   }
+}

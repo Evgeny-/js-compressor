@@ -1,0 +1,36 @@
+.transition(@duration:0.3s, @ease:ease-out, @type:all) {
+   -webkit-transition: @type @duration @ease;
+   -moz-transition: @type @duration @ease;
+   -o-transition: @type @duration @ease;
+   transition: @type @duration @ease;
+}
+
+.inputSizes() {
+   width: 210px;
+   height: 34px;
+
+   &.-large {
+      width: 220px;
+   }
+
+   &.-small {
+      width: 180px;
+   }
+
+   &.-tiny {
+      width: 160px;
+   }
+}
+
+.inputStyles() {
+   background: #fff;
+   border-radius: 0;
+   border: 1px solid #d5d5d5;
+   color: #444;
+   padding: 5px;
+   box-sizing: border-box;
+   vertical-align: middle;
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   appearance: none;
+}

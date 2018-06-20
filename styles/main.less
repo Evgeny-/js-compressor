@@ -1,0 +1,74 @@
+html, body {
+   font-size: @fontSize;
+}
+
+body {
+   font-family: 'Arial', sans-serif;
+   margin: 0;
+   padding: 0;
+   color: #444;
+   background: #fff;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-hide {
+   display: none !important;
+}
+
+b {
+   font-weight: 600;
+}
+
+a {
+   color: @mainColor;
+   cursor: pointer;
+}
+
+.content {
+   width: 980px;
+   margin: 0 auto;
+}
+
+.buttons-container {
+   margin-left: 5px;
+}
+
+button, .button {
+   display: inline-block;
+   color: #fff;
+   background: lighten(@mainColor, 7%);
+   border: 0;
+   border-bottom: 1px solid darken(@mainColor, 7%);
+   padding: 8px 17px 7px;
+   box-sizing: border-box;
+   text-align: center;
+   border-radius: 2px;
+   transition: 0.1s ease-out background;
+   cursor: pointer;
+
+   &:hover {
+      background: lighten(@mainColor, 2%);
+      color: #fff;
+   }
+
+   &:active {
+      background: darken(@mainColor, 2%);
+   }
+
+   &.-secondary {
+      color: #555;
+      background: rgb(234, 234, 234);
+      border-bottom: 1px solid rgb(215, 215, 215);
+
+      &:hover {
+         background: #ddd;
+      }
+
+      &:active {
+         background: #d8d8d8;
+      }
+   }
+}
+
+.-in-progress {
+   opacity: 0.8;
+}
